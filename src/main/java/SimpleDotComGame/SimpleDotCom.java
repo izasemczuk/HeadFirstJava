@@ -1,48 +1,32 @@
 package SimpleDotComGame;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SimpleDotCom {
 
-    private int[] locationCells;
-    private int numOfHits = 0;
+    private List<Integer> locationCells = new ArrayList<Integer>();
 
     public String checkYourself(String userGuess) {
         int guessCell = Integer.parseInt(userGuess);
         String result = "miss";
 
-        if (guessCell < 0 || guessCell > 6)
-        {
+        if (guessCell < 0 || guessCell > 6) {
             String wrongInput = "error";
             return wrongInput;
         }
 
-        for (int cell : locationCells) {
-              if (guessCell == cell) {
-                  result = "hit";
-                  numOfHits++;
-                  break;
-              }
+        if (locationCells.contains(guessCell) == true) {
+            locationCells.remove(locationCells.indexOf(guessCell));
+            if (locationCells.isEmpty()) result = "kill";
+            else result = "hit";
         }
 
-        if (numOfHits == locationCells.length) {
-            result = "kill";
-        }
-
-        System.out.println(result);
         return result;
 
-
     }
 
-
-    public int getNumOfHits() {
-        return numOfHits;
-    }
-
-    public void setNumOfHits(int numOfHits) {
-        this.numOfHits = numOfHits;
-    }
-
-    public void setLocationCells(int[] locationCells) {
+    public void setLocationCells(List<Integer> locationCells) {
         this.locationCells = locationCells;
     }
 }
