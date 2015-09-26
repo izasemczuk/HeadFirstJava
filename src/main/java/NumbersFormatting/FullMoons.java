@@ -2,10 +2,6 @@ package NumbersFormatting;
 import static java.lang.System.out;
 import java.util.*;
 
-
-/**
- * Created by izunia on 2015-09-26.
- */
 public class FullMoons {
 
     static int DAY_IM = 1000 * 60 * 60 * 24;
